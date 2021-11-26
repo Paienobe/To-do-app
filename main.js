@@ -53,6 +53,7 @@ let item = []
 let allActive = []
 
 insertBox.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
     const todo = {
         text: "",
         checked: false,
@@ -91,6 +92,7 @@ insertBox.addEventListener("keypress", (e) => {
             deleteBtn(btn)
         })
     })
+   }
 })
 
 
