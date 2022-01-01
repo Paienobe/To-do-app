@@ -123,33 +123,27 @@ insertBox.addEventListener("keypress", (e) => {
 })
 
 
+const checkItem = (item, countIncreaseOrDecrease) => {
+  item.parentElement.childNodes[3].style.textDecoration = 'line-through'
+  item.parentElement.childNodes[3].style.color = 'hsl(236, 9%, 61%)'
+  countIncreaseOrDecrease
+  countRecord.innerHTML = `${count} item(s) left`
+  item.parentElement.parentElement.classList.add('completed')
+  item.parentElement.parentElement.classList.remove('active-item')
+  completed = document.querySelectorAll('.completed')
+  for (let i = 0; i < todoItems.length; i++) {
+    if (todoItems[i].id === Number(par.parentElement.children[1].id)) {
+      todoItems[i].checked = true
+    }
+  }
+}
+
 function checkedItem(par) {
-            if (par.classList.contains("clicked")) {
-                par.parentElement.childNodes[3].style.textDecoration = "line-through"
-                par.parentElement.childNodes[3].style.color = "hsl(236, 9%, 61%)"
-                count--
-                countRecord.innerHTML = `${count} item(s) left`
-                par.parentElement.parentElement.classList.add("completed")
-                par.parentElement.parentElement.classList.remove("active-item")
-                completed = document.querySelectorAll(".completed")
-                for (let i = 0; i < todoItems.length; i++) {
-                    if (todoItems[i].id === Number(par.parentElement.children[1].id)) {
-                        todoItems[i].checked = true
-                    } 
-                }
-            } else {
-                par.parentElement.childNodes[3].style.textDecoration = "none"
-                par.parentElement.childNodes[3].style.color = "hsl(235, 19%, 35%)"
-                count++
-                countRecord.innerHTML = `${count} item(s) left`
-                par.parentElement.parentElement.classList.remove("completed")
-                par.parentElement.parentElement.classList.add("active-item")
-                for (let i = 0; i < todoItems.length; i++) {
-                    if (todoItems[i].id === Number(par.parentElement.children[1].id)) {
-                        todoItems[i].checked = false
-                    }
-                }
-            }        
+  if (par.classList.contains('clicked')) {
+    checkItem(par, count--)
+  } else {
+    checkItem(par, count++)
+  }
 }
 
 
