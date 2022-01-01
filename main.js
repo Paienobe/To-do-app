@@ -64,7 +64,7 @@ lightMode.addEventListener('click', () => {
     'white',
     'white',
     mobileLightBackgroundImage,
-    desktopDarkBackgroundImage
+    desktopLightBackgroundImage
   )
 })
 
