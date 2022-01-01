@@ -132,7 +132,7 @@ const checkItem = (item, countIncreaseOrDecrease) => {
   item.parentElement.parentElement.classList.remove('active-item')
   completed = document.querySelectorAll('.completed')
   for (let i = 0; i < todoItems.length; i++) {
-    if (todoItems[i].id === Number(par.parentElement.children[1].id)) {
+    if (todoItems[i].id === Number(item.parentElement.children[1].id)) {
       todoItems[i].checked = true
     }
   }
