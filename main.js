@@ -10,35 +10,62 @@ let completed = []
 
 
 // switching betwwwn light and dark mode
-darkMode.addEventListener("click", () => {
-    darkMode.style.display = "none"
-    lightMode.style.display = "block"
-    document.body.style.backgroundColor = "hsl(235, 21%, 11%)"
-    insertSection.style.backgroundColor = "hsl(235, 24%, 19%)"
-    insertBox.style.backgroundColor = "hsl(235, 24%, 19%)"
-    container.style.backgroundColor = "hsl(235, 24%, 19%)"
-    tabs.style.backgroundColor = "hsl(235, 24%, 19%)"
-    if (window.innerWidth < 950) {
-        header.style.backgroundImage = `url("./images/bg-mobile-dark.jpg")`
-    } else {
-        header.style.backgroundImage = `url("./images/bg-desktop-dark.jpg")`
-    }
+const mobileDarkBackgroundImage = `url("./images/bg-mobile-dark.jpg")`
+const desktopDarkBackgroundImage = `url("./images/bg-desktop-dark.jpg")`
+const mobileLightBackgroundImage = `url("./images/bg-mobile-light.jpg")`
+const desktopLightBackgroundImage = `url("./images/bg-desktop-light.jpg")`
+
+const modeSwitch = (
+  darkDisplay,
+  lightDisplay,
+  bodyColor,
+  insertSectionBgColor,
+  insertBoxColor,
+  containerColor,
+  tabsBackgroundColor,
+  headerImageMobile,
+  headerImageDesktop
+) => {
+  darkMode.style.display = darkDisplay
+  lightMode.style.display = lightDisplay
+  document.body.style.backgroundColor = bodyColor
+  insertSection.style.backgroundColor = insertSectionBgColor
+  insertBox.style.backgroundColor = insertBoxColor
+  container.style.backgroundColor = containerColor
+  tabs.style.backgroundColor = tabsBackgroundColor
+  if (window.innerWidth < 950) {
+    header.style.backgroundImage = headerImageMobile
+  } else {
+    header.style.backgroundImage = headerImageDesktop
+  }
+}
+
+darkMode.addEventListener('click', () => {
+  modeSwitch(
+    'none',
+    'block',
+    'hsl(235, 21%, 11%)',
+    'hsl(235, 24%, 19%)',
+    'hsl(235, 24%, 19%)',
+    'hsl(235, 24%, 19%)',
+    'hsl(235, 24%, 19%)',
+    mobileDarkBackgroundImage,
+    desktopDarkBackgroundImage
+  )
 })
 
-
-lightMode.addEventListener("click", () => {
-    lightMode.style.display = "none"
-    darkMode.style.display = "inline"
-    document.body.style.backgroundColor = "hsl(236, 33%, 92%)"
-    insertSection.style.backgroundColor = "white"
-    insertBox.style.backgroundColor = "white"
-    container.style.backgroundColor = "white"
-    tabs.style.backgroundColor = "white"
-    if (window.innerWidth < 950) {
-        header.style.backgroundImage = `url("./images/bg-mobile-light.jpg")`
-    } else {
-        header.style.backgroundImage = `url("./images/bg-desktop-light.jpg")`
-    }
+lightMode.addEventListener('click', () => {
+  modeSwitch(
+    'block',
+    'none',
+    'hsl(236, 33%, 92%)',
+    'white',
+    'white',
+    'white',
+    'white',
+    mobileLightBackgroundImage,
+    desktopDarkBackgroundImage
+  )
 })
 
 
